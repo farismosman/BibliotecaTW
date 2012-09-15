@@ -1,5 +1,13 @@
 public class Book {
-    public String makeABook(String aBook) {
+
+    private String aBook;
+
+    public Book(String aBook) {
+        this.aBook = aBook;
+    }
+
+    @Override
+    public String toString() {
         return aBook;
     }
 }
