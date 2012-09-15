@@ -9,12 +9,6 @@ public class TestBibLibrary {
     BibLibrary library = new BibLibrary();
 
     @Test
-    public void testUserCanViewAllBooks() throws Exception {
-        
-        assertEquals(listOfAllBooks, library.viewListOfBooks()); 
-    }
-
-    @Test
     public void testWhenUserChoosesToViewBooksHeShouldSeeThem() throws Exception {
         String viewAllBooks = "view books";
         
