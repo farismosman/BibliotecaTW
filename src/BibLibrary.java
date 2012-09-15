@@ -12,7 +12,9 @@ public class BibLibrary {
 
     public String processUserChoice(String input) {
         if (input.equals("view books")){
-        return StringUtils.join(books().keySet(), "\n");
+            return StringUtils.join(books().keySet(), "\n");
+        } else if (input.equals("reserve a book")) {
+            return reserve("book 1");
         } else {
             return "Select a valid option!!";
         }
@@ -33,9 +35,11 @@ public class BibLibrary {
         }
     }
 
-    public void reserve(String book) {
+    public String reserve(String book) {
         if (allBooks.containsKey(book)){
             allBooks.put(book, "reserved");
+            return "Thank You!";
         }
+        return "Failing";
     }
 }

@@ -10,9 +10,9 @@ public class TestBibLibrary {
 
     @Test
     public void testWhenUserChoosesToViewBooksHeShouldSeeThem() throws Exception {
-        String viewAllBooks = "view books";
+        String userChoice = "view books";
         
-        assertEquals(listOfAllBooks, library.processUserChoice(viewAllBooks));
+        assertEquals(listOfAllBooks, library.processUserChoice(userChoice));
     }
 
     @Test
@@ -32,5 +32,12 @@ public class TestBibLibrary {
         library.reserve("book 1");
          
         assertEquals(true, library.getStatus("book 1"));
+    }
+
+    @Test
+    public void testIfUserReserveABookItShouldReserveIt() throws Exception {
+        String userChoice = "reserve a book";
+        
+        assertEquals("Thank You!", library.processUserChoice(userChoice));
     }
 }
