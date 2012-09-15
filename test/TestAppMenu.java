@@ -8,12 +8,11 @@ public class TestAppMenu {
     
     @Test
     public void testUserOptions() throws Exception {
-        String menuOptions = "To view all books type \"view books\"\n" + "To reserve a book type \"reserve book\"";
+        String menuOptions = 
+                "To view all books type \"view books\"\n" + 
+                "To reserve a book type \"reserve book\"\n" + 
+                "To check your library number type \"library number\"";
         assertEquals(menuOptions, appMenu.userOptions());
     }
 
-    @Test
-    public void testSelectedOptionReturnTheSelectedOption() throws Exception {
-       assertEquals("invalid option", appMenu.selectedOption("invalid option"));
-    }
 }
