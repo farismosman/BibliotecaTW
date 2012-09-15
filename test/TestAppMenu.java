@@ -8,7 +8,7 @@ public class TestAppMenu {
     
     @Test
     public void testUserOptions() throws Exception {
-        String menuOptions = "To view all books type \"view books\"\n";
+        String menuOptions = "To view all books type \"view books\"\n" + "To reserve a book type \"reserve book\"";
         assertEquals(menuOptions, appMenu.userOptions());
     }
 

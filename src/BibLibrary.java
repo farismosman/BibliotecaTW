@@ -1,22 +1,41 @@
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.HashMap;
+
 public class BibLibrary {
 
+    private HashMap<String, String> allBooks = new HashMap<String, String>();
+
     public BibLibrary() {
-        booksInLibrary();
+        books();
     }
 
     public String processUserChoice(String input) {
         if (input.equals("view books")){
-        return booksInLibrary();
+        return StringUtils.join(books().keySet(), "\n");
         } else {
             return "Select a valid option!!";
         }
     }
 
-    private final String booksInLibrary() {
-        String allBooks = 
-                new Book("book 1") + "\n" +
-                new Book("book 2") + "\n" +
-                new Book("book 3") + "\n";
+    private final HashMap<String, String> books() {
+            allBooks.put(new Book("book 1").toString(), "not reserved");
+            allBooks.put(new Book("book 2").toString(), "not reserved");
+            allBooks.put(new Book("book 3").toString(), "not reserved");
         return allBooks;
      }
+
+    public boolean getStatus(String book) {
+        if (allBooks.containsKey(book) && allBooks.get(book).equals("not reserved")) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public void reserve(String book) {
+        if (allBooks.containsKey(book)){
+            allBooks.put(book, "reserved");
+        }
+    }
 }

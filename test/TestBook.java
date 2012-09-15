@@ -10,4 +10,9 @@ public class TestBook {
 
         assertEquals(someBook, new Book("a test book").toString());
     }
+
+    @Test
+    public void testBookIsNotReservedByDefault() throws Exception {
+        
+    }
 }

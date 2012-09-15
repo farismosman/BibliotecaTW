@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 public class TestBibLibrary {
 
-    private String listOfAllBooks = "book 1\n" + "book 2\n" + "book 3\n";
+    private String listOfAllBooks = "book 1\n" + "book 2\n" + "book 3";
 
     BibLibrary library = new BibLibrary();
 
@@ -20,5 +20,17 @@ public class TestBibLibrary {
         String userChoice = "an option";
         
         assertEquals("Select a valid option!!", library.processUserChoice(userChoice)); 
+    }
+
+    @Test
+    public void testBookIsNotReservedByDefault() throws Exception {
+        assertEquals(false, library.getStatus("book 1"));
+    }
+
+    @Test
+    public void testReserveABook() throws Exception {
+        library.reserve("book 1");
+         
+        assertEquals(true, library.getStatus("book 1"));
     }
 }
