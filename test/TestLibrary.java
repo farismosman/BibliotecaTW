@@ -1,22 +1,10 @@
 import org.junit.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-
 import static org.junit.Assert.assertEquals;
 
 public class TestLibrary {
 
     Library library = new Library();
-
-    private ByteArrayOutputStream consoleOutputContent = new ByteArrayOutputStream();
-    Biblioteca biblioteca = fakedBibliotecaUserInput("some faked input");
-
-    private Biblioteca fakedBibliotecaUserInput(String aText){
-        ByteArrayInputStream consoleInputContent = new ByteArrayInputStream(aText.getBytes());
-        return new Biblioteca(new PrintStream(consoleOutputContent), consoleInputContent);
-    }
 
     @Test
     public void testReserveABook() throws Exception {
