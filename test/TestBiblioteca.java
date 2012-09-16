@@ -1,5 +1,6 @@
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
@@ -7,12 +8,16 @@ import static org.junit.Assert.assertEquals;
 
 public class TestBiblioteca {
 
-    private ByteArrayOutputStream consoleContents = new ByteArrayOutputStream();
-    
-    Biblioteca biblioteca = new Biblioteca(new PrintStream(consoleContents));
-    
+    private ByteArrayOutputStream consoleOutputContent = new ByteArrayOutputStream();
+    Biblioteca biblioteca = fakedBibliotecaUserInput("some faked input");
+
     private String output(){
-        return consoleContents.toString().trim();
+        return consoleOutputContent.toString().trim();
+    }
+    
+    private Biblioteca fakedBibliotecaUserInput(String aText){
+        ByteArrayInputStream consoleInputContent = new ByteArrayInputStream(aText.getBytes());
+        return new Biblioteca(new PrintStream(consoleOutputContent), consoleInputContent);
     }
 
     @Test
@@ -37,5 +42,12 @@ public class TestBiblioteca {
                         "To check your library number type \"library number\"";
         biblioteca.bibMenu();
         assertEquals(menuOptions, output());
+    }
+
+    @Test
+    public void testUserCanInputFromConsole() throws Exception {
+        biblioteca = fakedBibliotecaUserInput("a user input");
+
+        assertEquals("a user input", biblioteca.userInput());
     }
 }

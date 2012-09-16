@@ -1,13 +1,15 @@
-import java.io.PrintStream;
+import java.io.*;
 
 public class Biblioteca {
     
     AppMenu appMenu = new AppMenu();
     
     private PrintStream printStream;
+    private BufferedReader bufferedReader;
 
-    public Biblioteca(PrintStream printStream) {
+    public Biblioteca(PrintStream printStream, InputStream inputStream) {
         this.printStream = printStream;
+        this.bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
     }
 
     public void printMessages(String message) {
@@ -20,5 +22,16 @@ public class Biblioteca {
 
     public void bibMenu() {
         printMessages(appMenu.userOptions());
+    }
+
+    public String userInput() {
+        String input = "";
+        
+        try{
+            input = bufferedReader.readLine();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+        return input;
     }
 }
