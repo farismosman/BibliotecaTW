@@ -8,6 +8,8 @@ import static org.junit.Assert.assertEquals;
 
 public class TestBiblioteca {
 
+    private String listOfAllBooks = "book 1\n" + "book 2\n" + "book 3";
+
     private ByteArrayOutputStream consoleOutputContent = new ByteArrayOutputStream();
     Biblioteca biblioteca = fakedBibliotecaUserInput("some faked input");
 
@@ -50,4 +52,33 @@ public class TestBiblioteca {
 
         assertEquals("a user input", biblioteca.userInput());
     }
+
+    @Test
+    public void testWhenUserChoosesToViewBooksHeShouldSeeThem() throws Exception {
+        String userChoice = "view books";
+
+        assertEquals(listOfAllBooks, biblioteca.processUserChoice(userChoice));
+    }
+
+    @Test
+    public void testUserSelectsInvalidOption() throws Exception {
+        String userChoice = "an option";
+
+        assertEquals("Select a valid option!!", biblioteca.processUserChoice(userChoice));
+    }
+
+    @Test
+    public void testIfUserReserveABookItShouldReserveIt() throws Exception {
+        String userChoice = "reserve a book";
+
+        assertEquals("Thank You! Enjoy the book.", biblioteca.processUserChoice(userChoice));
+    }
+
+    @Test
+    public void testIfUserChoosesToCheckLibraryNumberItShouldDoIt() throws Exception {
+        String userChoice = "library number";
+
+        assertEquals("Please talk to Librarian. Thank you.", biblioteca.processUserChoice(userChoice));
+    }
+
 }
