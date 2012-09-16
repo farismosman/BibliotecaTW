@@ -38,10 +38,12 @@ public class Biblioteca {
         return input;
     }
 
-    public String processUserChoice(String input) {
+    public String processUserChoice() {
+        String input = userInput();
         if (input.equals("view books")){
             return StringUtils.join(library.books().keySet(), "\n");
         } else if (input.equals("reserve a book")) {
+            
             return library.reserve("book 1");
         } else if (input.equals("library number")) {
             return library.checkNumber();

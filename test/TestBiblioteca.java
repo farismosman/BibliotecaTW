@@ -55,30 +55,30 @@ public class TestBiblioteca {
 
     @Test
     public void testWhenUserChoosesToViewBooksHeShouldSeeThem() throws Exception {
-        String userChoice = "view books";
+        biblioteca = fakedBibliotecaUserInput("view books");
 
-        assertEquals(listOfAllBooks, biblioteca.processUserChoice(userChoice));
+        assertEquals(listOfAllBooks, biblioteca.processUserChoice());
     }
 
     @Test
     public void testUserSelectsInvalidOption() throws Exception {
-        String userChoice = "an option";
+        biblioteca = fakedBibliotecaUserInput("an option");
 
-        assertEquals("Select a valid option!!", biblioteca.processUserChoice(userChoice));
+        assertEquals("Select a valid option!!", biblioteca.processUserChoice());
     }
 
     @Test
     public void testIfUserReserveABookItShouldReserveIt() throws Exception {
-        String userChoice = "reserve a book";
+        biblioteca = fakedBibliotecaUserInput("reserve a book");
 
-        assertEquals("Thank You! Enjoy the book.", biblioteca.processUserChoice(userChoice));
+        assertEquals("Thank You! Enjoy the book.", biblioteca.processUserChoice());
     }
 
     @Test
     public void testIfUserChoosesToCheckLibraryNumberItShouldDoIt() throws Exception {
-        String userChoice = "library number";
+        biblioteca = fakedBibliotecaUserInput("library number");
 
-        assertEquals("Please talk to Librarian. Thank you.", biblioteca.processUserChoice(userChoice));
+        assertEquals("Please talk to Librarian. Thank you.", biblioteca.processUserChoice());
     }
 
 }

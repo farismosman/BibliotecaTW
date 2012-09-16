@@ -2,6 +2,13 @@ import java.util.HashMap;
 
 public class BibLibrary {
 
+    private Biblioteca biblioteca;
+
+    public BibLibrary(Biblioteca biblioteca) {
+        this.biblioteca = biblioteca;
+        books();
+    }
+
     private HashMap<String, String> allBooks = new HashMap<String, String>();
 
     protected final HashMap<String, String> books() {
