@@ -1,10 +1,10 @@
 import java.util.HashMap;
 
-public class BibLibrary {
+public class Library {
 
     private Biblioteca biblioteca;
 
-    public BibLibrary(Biblioteca biblioteca) {
+    public Library(Biblioteca biblioteca) {
         this.biblioteca = biblioteca;
         books();
     }
@@ -18,7 +18,7 @@ public class BibLibrary {
         return allBooks;
     }
 
-    public BibLibrary() {
+    public Library() {
         books();
     }
 

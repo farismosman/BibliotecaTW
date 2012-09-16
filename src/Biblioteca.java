@@ -5,7 +5,7 @@ import java.io.*;
 public class Biblioteca {
     
     AppMenu appMenu = new AppMenu();
-    BibLibrary library = new BibLibrary();
+    Library library = new Library();
     
     private PrintStream printStream;
     private BufferedReader bufferedReader;
@@ -28,6 +28,7 @@ public class Biblioteca {
     }
 
     public String userInput() {
+        printStream.print("> ");
         String input = "";
         
         try{
@@ -43,8 +44,9 @@ public class Biblioteca {
         if (input.equals("view books")){
             return StringUtils.join(library.books().keySet(), "\n");
         } else if (input.equals("reserve a book")) {
-            
-            return library.reserve("book 1");
+            printStream.println("Book:");
+            String book = userInput();
+            return library.reserve(book);
         } else if (input.equals("library number")) {
             return library.checkNumber();
         } else {

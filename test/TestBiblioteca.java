@@ -69,7 +69,7 @@ public class TestBiblioteca {
 
     @Test
     public void testIfUserReserveABookItShouldReserveIt() throws Exception {
-        biblioteca = fakedBibliotecaUserInput("reserve a book");
+        biblioteca = fakedBibliotecaUserInput("reserve a book\nbook 1");
 
         assertEquals("Thank You! Enjoy the book.", biblioteca.processUserChoice());
     }
@@ -77,7 +77,7 @@ public class TestBiblioteca {
     @Test
     public void testIfUserChoosesToCheckLibraryNumberItShouldDoIt() throws Exception {
         biblioteca = fakedBibliotecaUserInput("library number");
-
+        
         assertEquals("Please talk to Librarian. Thank you.", biblioteca.processUserChoice());
     }
 
