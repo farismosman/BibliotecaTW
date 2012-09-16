@@ -28,4 +28,14 @@ public class TestBiblioteca {
         biblioteca.welcomeScreen();
         assertEquals(welcome, output());
     }
+
+    @Test
+    public void testMenuOptions() throws Exception {
+        String menuOptions = 
+                        "To view all books type \"view books\"\n" +
+                        "To reserve a book type \"reserve book\"\n" +
+                        "To check your library number type \"library number\"";
+        biblioteca.bibMenu();
+        assertEquals(menuOptions, output());
+    }
 }
