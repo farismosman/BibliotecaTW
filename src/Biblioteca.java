@@ -66,4 +66,17 @@ public class Biblioteca {
         quit = true;
         return "Thanks for using our library!";
     }
+    
+    public void run(){
+        welcomeScreen();
+        while (!quit){
+            bibMenu();
+            userInput();
+            processUserChoice();   
+        }
+    }
+    
+    public void main(){
+        new Biblioteca(System.out, System.in).run();
+    }
 }
