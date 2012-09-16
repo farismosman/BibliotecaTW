@@ -10,6 +10,12 @@ public class Biblioteca {
     private PrintStream printStream;
     private BufferedReader bufferedReader;
 
+    public boolean isQuit() {
+        return quit;
+    }
+
+    private boolean quit = false;
+
     public Biblioteca(PrintStream printStream, InputStream inputStream) {
         this.printStream = printStream;
         this.bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
@@ -49,8 +55,15 @@ public class Biblioteca {
             return library.reserve(book);
         } else if (input.equals("library number")) {
             return library.checkNumber();
-        } else {
+        } else if (input.equals("q") || input.equals("Q")){
+            return quitUser();
+        }else {
             return "Select a valid option!!";
         }
+    }
+
+    public String quitUser() {
+        quit = true;
+        return "Thanks for using our library!";
     }
 }

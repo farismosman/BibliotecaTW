@@ -12,14 +12,12 @@ public class TestBiblioteca {
     BibliotecaTestDoubles fakedBiblioteca = new BibliotecaTestDoubles();
     Biblioteca biblioteca = new Biblioteca(new PrintStream(fakedBiblioteca.consoleOutputContent), consoleInputContent);
 
-
     private String listOfAllBooks = "book 1\n" + "book 2\n" + "book 3";
 
     @Test
     public void testOutputToConsole() throws Exception {
         String expectedMessage = "some text!";
         biblioteca.printMessages("some text!");
-        
         
         assertEquals(expectedMessage, fakedBiblioteca.output());
     }
@@ -36,7 +34,8 @@ public class TestBiblioteca {
         String menuOptions = 
                         "To view all books type \"view books\"\n" +
                         "To reserve a book type \"reserve book\"\n" +
-                        "To check your library number type \"library number\"";
+                        "To check your library number type \"library number\"\n" +
+                        "To quit application type \"q\" or \"Q\"";
         biblioteca.bibMenu();
         assertEquals(menuOptions, fakedBiblioteca.output());
     }
@@ -76,4 +75,23 @@ public class TestBiblioteca {
         assertEquals("Please talk to Librarian. Thank you.", biblioteca.processUserChoice());
     }
 
+    @Test
+    public void testQuitAppLowerCaseInput() throws Exception {
+        biblioteca = fakedBiblioteca.fakedBibliotecaUserInput("q");
+        
+        assertEquals("Thanks for using our library!", biblioteca.quitUser());
+    }
+
+    @Test
+    public void testQuitAppUpperCaseInput() throws Exception {
+        biblioteca = fakedBiblioteca.fakedBibliotecaUserInput("Q");
+
+        assertEquals("Thanks for using our library!", biblioteca.quitUser());
+    }
+
+    @Test
+    public void testQuitChangesToTrueWhenUserQuits() throws Exception {
+        biblioteca.quitUser();
+        assertEquals(true, biblioteca.isQuit());
+    }
 }
