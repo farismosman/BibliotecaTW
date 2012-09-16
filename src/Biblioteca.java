@@ -10,8 +10,8 @@ public class Biblioteca {
     public void printMessages(String message) {
         printStream.println(message);
     }
-    
-    public void main(){
-        Biblioteca biblioteca = new Biblioteca(printStream);
+
+    public void welcomeScreen() {
+        printMessages("Welcome to Bangalore Public Library System");
     }
 }

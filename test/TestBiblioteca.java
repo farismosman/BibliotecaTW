@@ -21,4 +21,11 @@ public class TestBiblioteca {
         biblioteca.printMessages("some text!");
         assertEquals(expectedMessage, output());
     }
+
+    @Test
+    public void testWelcomeScreen() throws Exception {
+        String welcome = "Welcome to Bangalore Public Library System";
+        biblioteca.welcomeScreen();
+        assertEquals(welcome, output());
+    }
 }
