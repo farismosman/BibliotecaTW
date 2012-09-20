@@ -1,13 +1,26 @@
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.HashMap;
+
 public class UserChoices {
 
     private Biblioteca biblioteca;
     private Library library;
-
+    private HashMap<String, ChoiceHandler> allChoices = new HashMap<String, ChoiceHandler>();
+    
     public UserChoices(Biblioteca biblioteca, Library library) {
         this.biblioteca = biblioteca;
         this.library = library;
+        commandFactory();
+    }
+    
+    private final HashMap<String, ChoiceHandler> commandFactory(){
+        allChoices.put("view books", new ViewBooks());
+        allChoices.put("library number", new LibraryNumber());
+        allChoices.put("reserve a book", new ReserveABook());
+        allChoices.put("q", new QuitUser());
+        allChoices.put("Q", new QuitUser());
+        return allChoices;
     }
 
     private class ViewBooks implements ChoiceHandler {
@@ -42,5 +55,7 @@ public class UserChoices {
             return library.reserve(book);
         }
     }
+    
+    
     
 }
