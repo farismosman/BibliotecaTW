@@ -7,7 +7,7 @@ public class Biblioteca {
     AppMenu appMenu = new AppMenu();
     Library library = new Library();
     
-    private PrintStream printStream;
+    protected PrintStream printStream;
     private BufferedReader bufferedReader;
 
     public boolean isQuit() {
