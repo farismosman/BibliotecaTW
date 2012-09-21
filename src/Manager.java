@@ -1,6 +1,6 @@
 import java.io.*;
 
-public class Biblioteca {
+public class Manager {
     
     AppMenu appMenu = new AppMenu();
     private UserChoices userChoice = new UserChoices(this, new Library()) ;
@@ -8,7 +8,13 @@ public class Biblioteca {
     protected PrintStream printStream;
     private BufferedReader bufferedReader;
 
-    public Biblioteca(PrintStream printStream, InputStream inputStream) {
+    private boolean QUIT = false;
+
+    public boolean isQUIT() {
+        return QUIT;
+    }
+
+    public Manager(PrintStream printStream, InputStream inputStream) {
         this.printStream = printStream;
         this.bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
     }
@@ -42,13 +48,18 @@ public class Biblioteca {
         if (userChoice.commandsFactory().containsKey(input)){
             return userChoice.commandsFactory().get(input).execute();
         } else {
-            return "Select a valid option";
+            return "Select a valid option!!";
         }
     }
-    
+
+    public String quitUser() {
+        QUIT = true;
+        return "Thanks for using our library!";
+    }
+
     public void run(){
         welcomeScreen();
-        while (!userChoice.isQUIT()){
+        while (!QUIT){
             bibMenu();
             userInput();
             process();   
@@ -56,6 +67,6 @@ public class Biblioteca {
     }
     
     public void main(){
-        new Biblioteca(System.out, System.in).run();
+        new Manager(System.out, System.in).run();
     }
 }
