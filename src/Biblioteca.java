@@ -1,20 +1,12 @@
-import org.apache.commons.lang3.StringUtils;
-
 import java.io.*;
 
 public class Biblioteca {
     
     AppMenu appMenu = new AppMenu();
-    Library library = new Library();
+    private UserChoices userChoice = new UserChoices(this, new Library()) ;
     
     protected PrintStream printStream;
     private BufferedReader bufferedReader;
-
-    public boolean isQuit() {
-        return quit;
-    }
-
-    private boolean quit = false;
 
     public Biblioteca(PrintStream printStream, InputStream inputStream) {
         this.printStream = printStream;
@@ -45,34 +37,21 @@ public class Biblioteca {
         return input;
     }
 
-    public String processUserChoice() {
+    public String process() {
         String input = userInput();
-        if (input.equals("view books")){
-            return StringUtils.join(library.books().keySet(), "\n");
-        } else if (input.equals("reserve a book")) {
-            printStream.println("Book:");
-            String book = userInput();
-            return library.reserve(book);
-        } else if (input.equals("library number")) {
-            return library.checkNumber();
-        } else if (input.equals("q") || input.equals("Q")){
-            return quitUser();
-        }else {
-            return "Select a valid option!!";
+        if (userChoice.commandsFactory().containsKey(input)){
+            return userChoice.commandsFactory().get(input).execute();
+        } else {
+            return "Select a valid option";
         }
-    }
-
-    public String quitUser() {
-        quit = true;
-        return "Thanks for using our library!";
     }
     
     public void run(){
         welcomeScreen();
-        while (!quit){
+        while (!userChoice.isQUIT()){
             bibMenu();
             userInput();
-            processUserChoice();   
+            process();   
         }
     }
     

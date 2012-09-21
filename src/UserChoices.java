@@ -6,15 +6,27 @@ public class UserChoices {
 
     private Biblioteca biblioteca;
     private Library library;
+
     private HashMap<String, ChoiceHandler> allChoices = new HashMap<String, ChoiceHandler>();
+
+    private boolean QUIT = false;
     
     public UserChoices(Biblioteca biblioteca, Library library) {
         this.biblioteca = biblioteca;
         this.library = library;
-        commandFactory();
+        commandsFactory();
+    }
+
+    public boolean isQUIT() {
+        return QUIT;
+    }
+
+    public String quitUser() {
+        QUIT = true;
+        return "Thanks for using our library!";
     }
     
-    private final HashMap<String, ChoiceHandler> commandFactory(){
+    public HashMap<String, ChoiceHandler> commandsFactory(){
         allChoices.put("view books", new ViewBooks());
         allChoices.put("library number", new LibraryNumber());
         allChoices.put("reserve a book", new ReserveABook());
@@ -39,15 +51,13 @@ public class UserChoices {
     }
     
     private class QuitUser implements ChoiceHandler {
-
         @Override
         public String execute() {
-            return biblioteca.quitUser();
+            return quitUser();
         }
     }
     
     private class ReserveABook implements ChoiceHandler {
-
         @Override
         public String execute() {
             biblioteca.printStream.println("Book:");
@@ -55,7 +65,4 @@ public class UserChoices {
             return library.reserve(book);
         }
     }
-    
-    
-    
 }

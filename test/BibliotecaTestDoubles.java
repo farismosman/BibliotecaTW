@@ -4,10 +4,6 @@ import java.io.PrintStream;
 
 public class BibliotecaTestDoubles {
 
-    public BibliotecaTestDoubles() {
-        fakedBibliotecaUserInput("some faked input");
-    }
-
     public ByteArrayOutputStream consoleOutputContent = new ByteArrayOutputStream();
 
     public Biblioteca fakedBibliotecaUserInput(String aText){
