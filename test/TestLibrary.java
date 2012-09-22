@@ -7,8 +7,13 @@ public class TestLibrary {
     Library library = new Library();
 
     @Test
-    public void testReserveABook() throws Exception {
-        library.reserve("book 1");
+    public void testReserveExistingBook() throws Exception {
+        assertEquals("Thank You! Enjoy the book.", library.reserveABook("book 1"));
+    }
+
+    @Test
+    public void testReserveChangeItsStatusFromFalseToTrue() throws Exception {
+        library.reserveABook("book 1");
 
         assertEquals(true, library.getStatus("book 1"));
     }
@@ -22,6 +27,6 @@ public class TestLibrary {
     @Test
     public void testIfBookDoesNotExist() throws Exception {
         
-        assertEquals("Sorry we don't have that book yet.", library.reserve("book that does not exist"));
+        assertEquals("Sorry we don't have that book yet.", library.reserveABook("some unavailable book"));
     }
 }

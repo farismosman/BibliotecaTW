@@ -15,5 +15,4 @@ public class TestAppMenu {
                 "To quit application type \"q\" or \"Q\"";
         assertEquals(menuOptions, appMenu.userOptions());
     }
-
 }

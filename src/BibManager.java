@@ -1,6 +1,6 @@
 import java.io.*;
 
-public class Manager {
+public class BibManager {
     
     AppMenu appMenu = new AppMenu();
     private UserChoices userChoice = new UserChoices(this, new Library()) ;
@@ -14,7 +14,7 @@ public class Manager {
         return QUIT;
     }
 
-    public Manager(PrintStream printStream, InputStream inputStream) {
+    public BibManager(PrintStream printStream, InputStream inputStream) {
         this.printStream = printStream;
         this.bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
     }
@@ -34,7 +34,6 @@ public class Manager {
     public String userInput() {
         printStream.print("> ");
         String input = "";
-        
         try{
             input = bufferedReader.readLine();
         } catch (IOException ioe) {
@@ -43,8 +42,12 @@ public class Manager {
         return input;
     }
 
-    public String process() {
-        String input = userInput();
+    public String quitUser() {
+        QUIT = true;
+        return "Thanks for using our library!";
+    }
+
+    public String process(String input) {
         if (userChoice.commandsFactory().containsKey(input)){
             return userChoice.commandsFactory().get(input).execute();
         } else {
@@ -52,21 +55,16 @@ public class Manager {
         }
     }
 
-    public String quitUser() {
-        QUIT = true;
-        return "Thanks for using our library!";
-    }
-
     public void run(){
         welcomeScreen();
+        bibMenu();
         while (!QUIT){
-            bibMenu();
-            userInput();
-            process();   
+            String choice = userInput();
+            process(choice);   
         }
     }
     
-    public void main(){
-        new Manager(System.out, System.in).run();
+    public static void main(String [] args){
+        new BibManager(System.out, System.in).run();
     }
 }

@@ -4,13 +4,13 @@ import java.util.HashMap;
 
 public class UserChoices {
 
-    private Manager manager;
+    private BibManager bibManager;
     private Library library;
 
     private HashMap<String, ChoiceHandler> allChoices = new HashMap<String, ChoiceHandler>();
 
-    public UserChoices(Manager manager, Library library) {
-        this.manager = manager;
+    public UserChoices(BibManager bibManager, Library library) {
+        this.bibManager = bibManager;
         this.library = library;
     }
     
@@ -41,16 +41,16 @@ public class UserChoices {
     private class QuitUser implements ChoiceHandler {
         @Override
         public String execute() {
-            return manager.quitUser();
+            return bibManager.quitUser();
         }
     }
     
     private class ReserveABook implements ChoiceHandler {
         @Override
         public String execute() {
-            manager.printStream.println("Book:");
-            String book = manager.userInput();
-            return library.reserve(book);
+            bibManager.printStream.print("Book: ");
+            String book = bibManager.userInput();
+            return library.reserveABook(book);
         }
     }
 }
