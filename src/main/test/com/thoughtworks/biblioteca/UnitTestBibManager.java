@@ -1,3 +1,5 @@
+package com.thoughtworks.biblioteca;
+
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
@@ -35,6 +37,7 @@ public class UnitTestBibManager {
                         "To view all books type \"view books\"\n" +
                         "To reserve a book type \"reserve book\"\n" +
                         "To check your library number type \"library number\"\n" +
+                        "To view all movies type \"view movies\"\n" + 
                         "To quit application type \"q\" or \"Q\"";
         bibManager.bibMenu();
         assertEquals(menuOptions, fakedBibManager.output());

@@ -1,3 +1,5 @@
+package com.thoughtworks.biblioteca;
+
 public class Book {
 
     private String aBook;

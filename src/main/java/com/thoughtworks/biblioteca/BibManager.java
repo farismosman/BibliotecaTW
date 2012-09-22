@@ -1,3 +1,5 @@
+package com.thoughtworks.biblioteca;
+
 import java.io.*;
 
 public class BibManager {

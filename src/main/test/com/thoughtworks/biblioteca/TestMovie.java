@@ -1,3 +1,5 @@
+package com.thoughtworks.biblioteca;
+
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -26,6 +28,8 @@ public class TestMovie {
 
     @Test
     public void testMovieFormat() throws Exception {
-        String aMovie = "";
+        String aMovie = "movie 1             director            6.4";
+        
+        assertEquals(aMovie, new Movie("movie 1", "director", "6.4").toString());
     }
 }

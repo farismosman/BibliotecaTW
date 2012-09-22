@@ -1,4 +1,11 @@
+package com.thoughtworks.biblioteca;
+
+import java.text.MessageFormat;
+
 public class Movie {
+
+    private final int LENGTH = 20;
+    private final String FORMAT = MessageFormat.format("%-{0}s%-{0}s%-{0}s", LENGTH);
     
     public String name;
     public String director;
@@ -12,6 +19,6 @@ public class Movie {
     
     @Override
     public String toString(){
-        return name + director + rating;
+        return String.format(FORMAT, name, director, rating).trim();
     }
 }

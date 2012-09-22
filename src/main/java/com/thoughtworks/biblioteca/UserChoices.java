@@ -1,3 +1,5 @@
+package com.thoughtworks.biblioteca;
+
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.HashMap;

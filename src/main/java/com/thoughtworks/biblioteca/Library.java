@@ -1,3 +1,5 @@
+package com.thoughtworks.biblioteca;
+
 import java.util.HashMap;
 
 public class Library {

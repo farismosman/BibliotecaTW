@@ -1,3 +1,5 @@
+package com.thoughtworks.biblioteca;
+
 public class AppMenu {
     private static final String VIEW_BOOKS = "To view all books type \"view books\"\n";
     private static final String RESERVE_BOOK = "To reserve a book type \"reserve book\"\n";
