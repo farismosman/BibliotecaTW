@@ -23,4 +23,9 @@ public class TestMovie {
         
         assertEquals(rating, new Movie("movie 1", "director", "N/A").rating);
     }
+
+    @Test
+    public void testMovieFormat() throws Exception {
+        String aMovie = "";
+    }
 }
