@@ -7,6 +7,7 @@ import java.util.List;
 public class Library {
 
     private HashMap<String, String> allBooks = new HashMap<String, String>();
+    private HashMap<String, String> allUsers = new HashMap<String, String>();
     private List<String> allMovies = new ArrayList<String>();
 
     public Library() {
@@ -26,6 +27,13 @@ public class Library {
         allMovies.add(new Movie("movie 2", "director 2", "1.4").toString());
         allMovies.add(new Movie("movie 3", "director 3", "N/A").toString());
         return allMovies;
+    }
+    
+    public HashMap<String, String> users(){
+        allUsers.put("111-1111", "passone");
+        allUsers.put("111-1112", "passtwo");
+        allUsers.put("111-1113", "passthree");
+        return allUsers;
     }
 
     public boolean getStatus(String book) {

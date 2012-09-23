@@ -11,6 +11,7 @@ public class BibManager {
     private BufferedReader bufferedReader;
 
     private boolean QUIT = false;
+    private Library library = new Library();
 
     public boolean isQUIT() {
         return QUIT;
@@ -68,5 +69,13 @@ public class BibManager {
     
     public static void main(String [] args){
         new BibManager(System.out, System.in).run();
+    }
+
+    public boolean login(String username, String password) {
+        if (library.users().containsKey(username) && library.users().get(username).equals(password)){
+            return true;
+        } else {
+            return false;
+        }
     }
 }

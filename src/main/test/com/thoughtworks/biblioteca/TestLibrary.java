@@ -25,11 +25,8 @@ public class TestLibrary {
         assertEquals(false, library.getStatus("book 1"));
     }
 
-
     @Test
-    public void testIfBookDoesNotExist() throws Exception {
-        
+    public void testIfBookDoesNotExist() throws Exception {   
         assertEquals("Sorry we don't have that book yet.", library.reserveABook("some unavailable book"));
     }
-
 }

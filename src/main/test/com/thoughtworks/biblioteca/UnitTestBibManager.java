@@ -98,6 +98,23 @@ public class UnitTestBibManager {
 //        assertEquals("Thank You! Enjoy the book.", bibManager.process("reserve a book"));
 //    }
 
+
+    @Test
+    public void testUserCanLoginIfDetailsAreCorrect() throws Exception {
+        String aUsername = "111-1111";
+        String aPassword = "passone";
+        
+        assertEquals(true, bibManager.login(aUsername, aPassword));
+    }
+
+    @Test
+    public void testUserCantLoginIfDetailsAreWrong() throws Exception {
+        String aUsername = "wrong username";
+        String aPassword = "111-1112";
+        
+        assertEquals(false, bibManager.login(aUsername, aPassword));
+    }
+
     @Test
     public void testIfUserChoosesToCheckLibraryNumberItShouldDoIt() throws Exception {
 
