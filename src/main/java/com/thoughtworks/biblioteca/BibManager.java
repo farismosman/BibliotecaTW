@@ -12,6 +12,7 @@ public class BibManager {
 
     private boolean QUIT = false;
     private Library library = new Library();
+    private boolean isLogin = false;
 
     public boolean isQUIT() {
         return QUIT;
@@ -66,16 +67,26 @@ public class BibManager {
             process(choice);   
         }
     }
-    
+
+    public String checkNumber() {
+        if (isLogin){
+            return "111-1111, 1111@email.com, 111-1111-phone";
+        } else {
+        return "Please talk to Librarian. Thank you.";
+        }
+
+    }
+
     public static void main(String [] args){
         new BibManager(System.out, System.in).run();
     }
 
     public boolean login(String username, String password) {
         if (library.users().containsKey(username) && library.users().get(username).equals(password)){
-            return true;
+            isLogin = true;
+            return isLogin;
         } else {
-            return false;
+            return isLogin;
         }
     }
 }

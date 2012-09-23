@@ -1,5 +1,8 @@
 1- In Library: a new implementation of reserve() has to be added so that it takes input from console. ---- DONE
 2- Add a method run and the method main. ----- DONE
 3- functional tests to be added.
-4- refactoring processUserChoice mehtod.
+4- refactoring processUserChoice method. ----- DONE
 6- General refactoring.
+_______________________________________________________
+
+7- add a login option to the menu and refactor.

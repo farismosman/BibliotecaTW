@@ -37,7 +37,7 @@ public class UserChoices {
     private class LibraryNumber implements ChoiceHandler {
         @Override
         public String execute() {
-            return library.checkNumber();
+            return bibManager.checkNumber();
         }
     }
     

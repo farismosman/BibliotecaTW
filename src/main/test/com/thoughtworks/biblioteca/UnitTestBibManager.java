@@ -116,8 +116,17 @@ public class UnitTestBibManager {
     }
 
     @Test
-    public void testIfUserChoosesToCheckLibraryNumberItShouldDoIt() throws Exception {
-
+    public void testUserCantSeeHisLibraryNumberIfHeIsNotLoggedIn() throws Exception {
+        
         assertEquals("Please talk to Librarian. Thank you.", bibManager.process("library number"));
+    }
+
+    @Test
+    public void testUserShouldSeeHisDetailsWhenHeIsLoggedIn() throws Exception {
+        String aUsername = "111-1111";
+        String aPassword = "passone";
+        bibManager.login(aUsername, aPassword);
+        
+        assertEquals("111-1111, 1111@email.com, 111-1111-phone", bibManager.process("library number"));
     }
 }

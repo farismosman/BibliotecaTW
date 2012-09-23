@@ -21,7 +21,7 @@ public class Library {
         return allBooks;
     }
 
-    public List<String> movies() {
+    public final List<String> movies() {
         allMovies.add(new Movie("Movie", "Director", "Rating").toString());
         allMovies.add(new Movie("movie 1", "director 1", "7.1").toString());
         allMovies.add(new Movie("movie 2", "director 2", "1.4").toString());
@@ -29,7 +29,7 @@ public class Library {
         return allMovies;
     }
     
-    public HashMap<String, String> users(){
+    public final HashMap<String, String> users(){
         allUsers.put("111-1111", "passone");
         allUsers.put("111-1112", "passtwo");
         allUsers.put("111-1113", "passthree");
@@ -51,9 +51,5 @@ public class Library {
         } else {
             return "Sorry we don't have that book yet.";
         }
-    }
-
-    public String checkNumber() {
-        return "Please talk to Librarian. Thank you.";
     }
 }
