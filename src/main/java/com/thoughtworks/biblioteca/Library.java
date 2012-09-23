@@ -1,10 +1,17 @@
 package com.thoughtworks.biblioteca;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Library {
 
     private HashMap<String, String> allBooks = new HashMap<String, String>();
+    private List<String> allMovies = new ArrayList<String>();
+
+    public Library() {
+        books();
+    }
 
     public final HashMap<String, String> books() {
         allBooks.put(new Book("book 1").toString(), "not reserved");
@@ -13,8 +20,12 @@ public class Library {
         return allBooks;
     }
 
-    public Library() {
-        books();
+    public List<String> movies() {
+        allMovies.add(new Movie("Movie", "Director", "Rating").toString());
+        allMovies.add(new Movie("movie 1", "director 1", "7.1").toString());
+        allMovies.add(new Movie("movie 2", "director 2", "1.4").toString());
+        allMovies.add(new Movie("movie 3", "director 3", "N/A").toString());
+        return allMovies;
     }
 
     public boolean getStatus(String book) {

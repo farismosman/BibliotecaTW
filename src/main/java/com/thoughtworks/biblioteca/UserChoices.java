@@ -18,6 +18,7 @@ public class UserChoices {
     
     public HashMap<String, ChoiceHandler> commandsFactory(){
         allChoices.put("view books", new ViewBooks());
+        allChoices.put("view movies", new ViewMovies());
         allChoices.put("library number", new LibraryNumber());
         allChoices.put("reserve a book", new ReserveABook());
         allChoices.put("q", new QuitUser());
@@ -53,6 +54,14 @@ public class UserChoices {
             bibManager.printStream.print("Book: ");
             String book = bibManager.userInput();
             return library.reserveABook(book);
+        }
+    }
+
+    private class ViewMovies implements ChoiceHandler {
+
+        @Override
+        public String execute() {
+           return StringUtils.join(library.movies(), "\n");
         }
     }
 }

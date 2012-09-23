@@ -15,6 +15,10 @@ public class UnitTestBibManager {
     BibManager bibManager = new BibManager(new PrintStream(fakedBibManager.consoleOutputContent), consoleInputContent);
 
     private String listOfAllBooks = "book 1\n" + "book 2\n" + "book 3";
+    private String listOfAllMovies = "Movie               Director            Rating\n" +
+                                     "movie 1             director 1          7.1\n" +
+                                     "movie 2             director 2          1.4\n" +
+                                     "movie 3             director 3          N/A";
 
     @Test
     public void testOutputToConsole() throws Exception {
@@ -74,6 +78,12 @@ public class UnitTestBibManager {
     public void testWhenUserChoosesToViewBooksHeShouldSeeThem() throws Exception {
 
         assertEquals(listOfAllBooks, bibManager.process("view books"));
+    }
+
+    @Test
+    public void testUserChoosesToViewMoviesHeShouldSeeThem() throws Exception {
+        
+        assertEquals(listOfAllMovies, bibManager.process("view movies"));
     }
 
     @Test
