@@ -21,6 +21,7 @@ public class UserChoices {
         allChoices.put("view movies", new ViewMovies());
         allChoices.put("library number", new LibraryNumber());
         allChoices.put("reserve a book", new ReserveABook());
+        allChoices.put("login", new Login());
         allChoices.put("q", new QuitUser());
         allChoices.put("Q", new QuitUser());
         return allChoices;
@@ -62,6 +63,18 @@ public class UserChoices {
         @Override
         public String execute() {
            return StringUtils.join(library.movies(), "\n");
+        }
+    }
+
+    private class Login implements ChoiceHandler {
+        @Override
+        public String execute() {
+            bibManager.printStream.print("username: ");
+            String username = bibManager.userInput();
+            bibManager.printStream.print("password: ");
+            String password = bibManager.userInput();
+            bibManager.login(username, password);
+            return "Logged in successfully";
         }
     }
 }

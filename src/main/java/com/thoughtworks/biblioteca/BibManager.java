@@ -12,7 +12,7 @@ public class BibManager {
 
     private boolean QUIT = false;
     private Library library = new Library();
-    private boolean isLogin = false;
+    public boolean isLogin = false;
 
     public boolean isQUIT() {
         return QUIT;

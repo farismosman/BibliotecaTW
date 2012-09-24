@@ -15,6 +15,7 @@ public class TestAppMenu {
                 "To reserve a book type \"reserve book\"\n" + 
                 "To check your library number type \"library number\"\n" + 
                 "To view all movies type \"view movies\"\n" +
+                "To login type \"login\"\n" + 
                 "To quit application type \"q\" or \"Q\"";
         assertEquals(menuOptions, appMenu.userOptions());
     }

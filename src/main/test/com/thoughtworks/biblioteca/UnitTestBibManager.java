@@ -41,7 +41,8 @@ public class UnitTestBibManager {
                         "To view all books type \"view books\"\n" +
                         "To reserve a book type \"reserve book\"\n" +
                         "To check your library number type \"library number\"\n" +
-                        "To view all movies type \"view movies\"\n" + 
+                        "To view all movies type \"view movies\"\n" +
+                        "To login type \"login\"\n" +
                         "To quit application type \"q\" or \"Q\"";
         bibManager.bibMenu();
         assertEquals(menuOptions, fakedBibManager.output());
@@ -92,7 +93,15 @@ public class UnitTestBibManager {
         assertEquals("Select a valid option!!", bibManager.process("an option"));
     }
 
-//    @Test
+    @Test
+    public void testUserSelectsToLogin() throws Exception {
+        bibManager = fakedBibManager.fakedUserInput("111-1111\npassone");
+        
+        assertEquals("Logged in successfully", bibManager.process("login"));
+        assertEquals(true, bibManager.isLogin);
+    }
+
+    //    @Test
 //    public void testIfUserReserveABookItShouldReserveIt() throws Exception {
 //
 //        assertEquals("Thank You! Enjoy the book.", bibManager.process("reserve a book"));
