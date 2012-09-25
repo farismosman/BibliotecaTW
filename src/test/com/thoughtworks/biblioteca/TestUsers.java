@@ -1,6 +1,5 @@
 package com.thoughtworks.biblioteca;
 
-import com.thoughtworks.biblioteca.Users;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
