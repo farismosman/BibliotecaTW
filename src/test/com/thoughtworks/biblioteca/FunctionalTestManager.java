@@ -22,12 +22,13 @@ public class FunctionalTestManager {
                                  "To quit application type \"q\" or \"Q\"";
     private String listOfAllBooks = "book 1\n" + "book 2\n" + "book 3";
     private String bookHasBeenReserved = "Thank You! Enjoy the book.";
+    private String goodbye = "Thanks for using our library!";
 
     @Test
     public void testUserViewsBooksAndRequestsOne() throws Exception {
         bibManager = fakedBibManager.fakedUserInput("view books\nreserve a book\nbook 1\nq");
-        String expectedMessage = welcomeMessage + menuOptions + "\n" + "> "+ listOfAllBooks + "\n" +
-                                "> Book: > " + bookHasBeenReserved + "\n> Thanks for using our library!";
+        String expectedMessage = welcomeMessage + menuOptions + "\n> "+ listOfAllBooks +
+                                "\n> Book: > " + bookHasBeenReserved + "\n> " + goodbye;
         bibManager.run();
         assertEquals(expectedMessage, fakedBibManager.output());
     }
