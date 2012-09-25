@@ -59,6 +59,24 @@ public class BibManager {
         }
     }
 
+    public boolean login(String username, String password) {
+        if (library.users().containsKey(username) && library.users().get(username).getPassword().equals(password)){
+            isLogin = true;
+            return isLogin;
+        } else {
+            return isLogin;
+        }
+    }
+
+    public String checkNumber() {
+        if (isLogin){
+            return library.users().get("111-1111").getDetails();
+        } else {
+            return "Please talk to Librarian. Thank you.";
+        }
+
+    }
+
     public void run(){
         welcomeScreen();
         bibMenu();
@@ -68,25 +86,7 @@ public class BibManager {
         }
     }
 
-    public String checkNumber() {
-        if (isLogin){
-            return "111-1111, 1111@email.com, 111-1111-phone";
-        } else {
-        return "Please talk to Librarian. Thank you.";
-        }
-
-    }
-
     public static void main(String [] args){
         new BibManager(System.out, System.in).run();
-    }
-
-    public boolean login(String username, String password) {
-        if (library.users().containsKey(username) && library.users().get(username).equals(password)){
-            isLogin = true;
-            return isLogin;
-        } else {
-            return isLogin;
-        }
     }
 }

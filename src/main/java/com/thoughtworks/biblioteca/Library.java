@@ -7,7 +7,7 @@ import java.util.List;
 public class Library {
 
     private HashMap<String, String> allBooks = new HashMap<String, String>();
-    private HashMap<String, String> allUsers = new HashMap<String, String>();
+    private HashMap<String, Users> allUsers = new HashMap<String, Users>();
     private List<String> allMovies = new ArrayList<String>();
 
     public Library() {
@@ -29,10 +29,10 @@ public class Library {
         return allMovies;
     }
     
-    public final HashMap<String, String> users(){
-        allUsers.put("111-1111", "passone");
-        allUsers.put("111-1112", "passtwo");
-        allUsers.put("111-1113", "passthree");
+    public final HashMap<String, Users> users(){
+        allUsers.put("111-1111", new Users("111-1111","passone", "111-1111, 1111@email, 1111-phone"));
+        allUsers.put("111-1112", new Users("111-1112","passtwo", "111-1112, 1112@email, 1112-phone"));
+        allUsers.put("111-1113", new Users("111-1113","passthree", "111-1113, 1113@email, 1113-phone"));
         return allUsers;
     }
 

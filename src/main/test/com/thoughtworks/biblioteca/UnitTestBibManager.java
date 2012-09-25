@@ -101,11 +101,12 @@ public class UnitTestBibManager {
         assertEquals(true, bibManager.isLogin);
     }
 
-    //    @Test
-//    public void testIfUserReserveABookItShouldReserveIt() throws Exception {
-//
-//        assertEquals("Thank You! Enjoy the book.", bibManager.process("reserve a book"));
-//    }
+        @Test
+    public void testIfUserReserveABookItShouldReserveIt() throws Exception {
+        bibManager = fakedBibManager.fakedUserInput("book 1");
+
+        assertEquals("Thank You! Enjoy the book.", bibManager.process("reserve a book"));
+    }
 
 
     @Test
@@ -136,6 +137,6 @@ public class UnitTestBibManager {
         String aPassword = "passone";
         bibManager.login(aUsername, aPassword);
         
-        assertEquals("111-1111, 1111@email.com, 111-1111-phone", bibManager.process("library number"));
+        assertEquals("111-1111, 1111@email, 1111-phone", bibManager.process("library number"));
     }
 }
