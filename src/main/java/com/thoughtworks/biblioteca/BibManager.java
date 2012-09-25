@@ -82,7 +82,7 @@ public class BibManager {
         bibMenu();
         while (!QUIT){
             String choice = userInput();
-            process(choice);   
+            printMessages(process(choice));   
         }
     }
 
